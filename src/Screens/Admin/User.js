@@ -16,6 +16,7 @@ export default class User extends Essentials {
         let { user } = this.state;
         return (
             <section id="content-wrapper">
+                
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card borderincr" style={{ background: "#e6e6e6" }}>

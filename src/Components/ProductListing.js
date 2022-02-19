@@ -13,7 +13,8 @@ export function ProductList(props) {
                             <img class='borderincr shadow1' src={`${ACCESS_POINT}/${JSON.parse(ival.image)[0]}`} alt='' style={{ width: 75, height: 75, objectFit: 'contain' }} />
 
                         </div>
-                        <div class={`col-sm-8`} style={{ maxHeight: 100, overflow: 'hidden', fontSize: 14 }}>
+                        <div class={`col-sm-6`} style={{ maxHeight: 100, overflow: 'hidden', fontSize: 14 }}>
+
                             <div class="col-lg-12">
                                 <label style={{ color: "#f75145", fontWeight: 'bold' }}>Name</label>
                                 <br />
@@ -24,6 +25,11 @@ export function ProductList(props) {
                                 <br />
                                 {ival.info}
                             </div>
+
+                        </div>
+                        <div class="col-lg-2">
+                            <label style={{ color: "#f75145", fontWeight: 'bold' }}>Price: ₹{ival.price}</label>
+                            <br />
 
                         </div>
                     </div>

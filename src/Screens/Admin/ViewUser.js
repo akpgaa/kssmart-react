@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2';
 import Bridge from '../../Components/Bridge';
+import Loader from '../../Components/Loader';
 import Modal from '../../Components/Modal';
 import Table from '../../Components/Table'
 import Essentials from '../../Components/Validation';
@@ -10,7 +11,7 @@ export default class Main extends Essentials {
         super(props);
         this.state = {
             data: [],
-            loading: true
+            Show: true
         }
     }
 
@@ -23,12 +24,12 @@ export default class Main extends Essentials {
             if (result) {
                 this.setState({
                     data: result.data,
-                    loading: false
+                    Show: false
                 });
 
             }
         } catch (error) {
-            this.setState({ loading: false })
+            this.setState({ Show: false })
             console.log(error)
         }
     }
@@ -79,6 +80,7 @@ export default class Main extends Essentials {
 
         return (
             <React.Fragment>
+                <Loader load={false} isOpen={this.state.Show} />
                 <Modal id='action' title='Action'>
 
                 </Modal>

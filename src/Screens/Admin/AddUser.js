@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2';
 import Bridge from '../../Components/Bridge';
+import Loader from '../../Components/Loader';
 import Essentials from '../../Components/Validation';
 
 export default class AddUser extends Essentials {
@@ -77,6 +78,7 @@ export default class AddUser extends Essentials {
 
         return (
             <section id="content-wrapper">
+                  <Loader load={false} isOpen={this.state.Show} />
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card shadow1">

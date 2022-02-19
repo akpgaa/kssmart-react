@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Bridge from '../../Components/Bridge';
+import Loader from '../../Components/Loader';
 import { ProductList } from '../../Components/ProductListing';
 import Essentials from '../../Components/Validation';
 import { SideProduct } from '../Vendor/Home';
@@ -12,6 +13,7 @@ export default class ViewProducts extends Essentials {
             Products: [],
             Products1: [],
             DistictOption: [{ value: 1, label: 'Cuddalore' }, { value: 2, label: 'Chennai' }],
+            Show: true
         }
     }
 
@@ -25,12 +27,12 @@ export default class ViewProducts extends Essentials {
                 this.setState({
                     Products: result.data,
                     Products1: result.data,
-                    loading: false
+                    Show: false
                 });
 
             }
         } catch (error) {
-            this.setState({ loading: false })
+            this.setState({ Show: false })
             console.log(error)
         }
     }
@@ -46,13 +48,14 @@ export default class ViewProducts extends Essentials {
         this.setState({ Products: this.state.Products1 })
     }
     render() {
-        let { Products, DistictOption } = this.state;
+        let { Products, DistictOption, Show } = this.state;
         return (
             <section id="content-wrapper">
+                <Loader load={false} isOpen={Show} />
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="col-lg-12 row  mar10">
-                            <div class="col-sm-4 ">
+                            <div class="col-sm-2 ">
                                 <label for="exampleInputEmail1" style={{ fontWeight: 'bold', fontSize: 18, color: '#1b2433' }}>Products</label>
                             </div>
                             <div class="col-sm-6 row form-group">
@@ -69,7 +72,7 @@ export default class ViewProducts extends Essentials {
                                     </select>
                                     {this.ValidationView(this.state.DistrictError)}
                                 </div>
-                                <div class="col-sm-4 justify-content-end pointerdiv" onClick={this.reset}>
+                                <div class="col-sm-2 justify-content-end pointerdiv" onClick={this.reset}>
                                     <div className="d-flex justify-content-end">
                                         <div className="form-control  pointerdiv" style={{ backgroundColor: 'red', borderRadius: 25, textAlign: 'center', }} >
                                             <span style={{ color: 'white', textAlign: 'center', }}>Reset</span>
@@ -80,7 +83,7 @@ export default class ViewProducts extends Essentials {
                             </div>
                             {this.props.Login &&
                                 <div class="col-sm-2 justify-content-end pointerdiv" onClick={() => this.handleNavigation('/Login')}>
-                                    <div className="d-flex justify-content-end">
+                                    <div className="d-flex justify-content-end" style={{ marginRight: 25 }} >
                                         <div className="form-control  pointerdiv" style={{ backgroundColor: '#1b2433', borderRadius: 25, textAlign: 'center', }} >
                                             <span style={{ color: 'white', textAlign: 'center', }}>Login</span>
                                         </div>

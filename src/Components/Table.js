@@ -7,7 +7,7 @@ export default function Table(props) {
 	var data = props.data ? props.data : []
 	console.log(Header, data)
 	return (
-		<div>
+		<div class="table-responsive">
 			<table class="table table-bordered " style={{ borderColor: '#1b2433' }}>
 				<thead class="thead-dark  text-light text-center" style={{ background: '#1b2433' }}>
 					<tr>
@@ -31,7 +31,8 @@ export default function Table(props) {
 
 				</tbody>
 			</table>
-
 		</div>
+
+
 	)
 }

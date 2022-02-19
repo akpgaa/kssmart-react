@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Bridge from '../../Components/Bridge';
+import Loader from '../../Components/Loader';
 import Table from '../../Components/Table'
 import Essentials from '../../Components/Validation';
 import { ACCESS_POINT } from '../../Config';
@@ -7,7 +8,8 @@ export default class Product extends Essentials {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            Show: true
         }
     }
     header = [
@@ -28,12 +30,12 @@ export default class Product extends Essentials {
             if (result) {
                 this.setState({
                     data: result.data,
-                    loading: false
+                    Show: false
                 });
 
             }
         } catch (error) {
-            this.setState({ loading: false })
+            this.setState({ Show: false })
             console.log(error)
         }
     }
@@ -97,12 +99,14 @@ export default class Product extends Essentials {
 
         let result = await Bridge.DataUpdate1("product", body, d.id)
         this.Mainfun()
+        this.setState({ Show: false })
     }
     render() {
 
         return (
 
             <section id="content-wrapper">
+                <Loader load={false} isOpen={this.state.Show} />
                 <div class="row">
                     <div class="col-lg-12">
                         <Table header={this.header} data={this.state.data} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2';
 import Bridge from '../../Components/Bridge';
+import Loader from '../../Components/Loader';
 import Essentials from '../../Components/Validation';
 import { ACCESS_POINT } from '../../Config';
 
@@ -11,6 +12,7 @@ export default class ProductHome extends Essentials {
             Products: [
             ],
             user: null,
+            Show: true
         }
     }
     componentDidMount = () => {
@@ -30,13 +32,13 @@ export default class ProductHome extends Essentials {
             if (result) {
                 this.setState({
                     Products: result.data,
-                    loading: false,
+                    Show: false,
                     user
                 });
 
             }
         } catch (error) {
-            this.setState({ loading: false })
+            this.setState({ Show: false })
             console.log(error)
         }
     }
@@ -89,7 +91,7 @@ export default class ProductHome extends Essentials {
 
             <div class='row ' style={{ background: '#dbdbdb', margin: 0, }}>
 
-
+                <Loader load={false} isOpen={this.state.Show} />
                 <div class="col-lg-12 row" style={{ padding: 50 }}>
                     <div class="col-sm-2">
                         <img class='borderincr shadow1' src='https://www.w3schools.com/css/pineapple.jpg' alt='' style={{ borderRadius: 50, width: 75, height: 75, objectFit: 'contain' }} />
@@ -233,7 +235,7 @@ export function SideProduct(props) {
                         </div>
                         : null
                     }
-                    <hr />
+
                 </div>
             ))}
         </div>

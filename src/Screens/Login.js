@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Bridge from '../Components/Bridge';
+import Loader from '../Components/Loader';
 import Essentials from '../Components/Validation'
 import { Userdata } from '../Config/Storagedata';
 
@@ -16,22 +17,26 @@ export default class Login extends Essentials {
             let { email, Password, } = this.state;
             if (this.validateText(email, 'emailError', 'Please enter ')) return true;
             if (this.validateText(Password, 'PasswordError', 'Please enter ')) return true;
-
+            this.setState({ Show: true })
             let result = await Bridge.loginCheck(email, Password)
             if (result.length > 0) {
                 let Encrypted = this.Encrypt(JSON.stringify(result[0]))
                 await localStorage.setItem(Userdata, Encrypted)
+                this.setState({ Show: false })
                 if (result[0].role == 'Admin Role') {
-                    this.handleNavigation('/admin/user')
+                    this.HrefNavigation('/admin/user')
                 } else if (result[0].role == 'Vendor Role') {
-                    this.handleNavigation('/vendor/home')
+                    this.HrefNavigation('/vendor/home')
                 } else {
+
                     this.setState({ PasswordError: 'error' })
                 }
             } else {
+                this.setState({ Show: false })
                 this.setState({ PasswordError: 'Username and Password does not match' })
             }
         } catch (error) {
+            this.setState({ Show: false })
             console.log(error);
         }
     }
@@ -39,7 +44,7 @@ export default class Login extends Essentials {
         let { name, email, Password } = this.state;
         return (
             <div class="global-container ">
-
+                <Loader load={false} isOpen={this.state.Show} />
                 <div class="card login-form shadow1" style={{ margin: 50 }}>
                     <div class="card-body">
                         <h3 class="card-title text-center">Admin/Vendor Login</h3>
