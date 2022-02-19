@@ -220,16 +220,16 @@ export function SideProduct(props) {
                             <div class="col-lg-12">
                                 <div class="circlesbox">
                                     <div class="circle" style={{ background: '#1b2433' }}></div>
-                                    <div class="circle" style={{ background: ival.status == 1 ? '#1b2433' : '' }}></div>
-                                    <div class="circle"></div>
-                                    <div class="circle"></div>
+                                    <div class="circle" style={{ background: (ival.status == 1 || ival.status == 2) ? '#1b2433' : '' }}></div>
+                                    {ival.status == 2 ? null : <div class="circle"></div>}
+                                    {ival.status == 2 ? null : <div class="circle"></div>}
 
                                 </div>
                                 <div class="circlesbox1">
                                     <span className=' circle1'>Submitted</span>
-                                    <span className=' circle1'>Forwared to Workplace</span>
-                                    <span className=' circle1'>Payment in process</span>
-                                    <span className=' circle1'>Done</span>
+                                    <span className=' circle1'> {ival.status == 2 ? <span style={{ color: 'red' }}>Rejected</span> : "Forwared to Workplace"}</span>
+                                    {ival.status == 2 ? null : <span className=' circle1'>Payment in process</span>}
+                                    {ival.status == 2 ? null : <span className=' circle1'>Done</span>}
                                 </div>
                             </div>
                         </div>

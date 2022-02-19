@@ -22,7 +22,7 @@ export default class Login extends Essentials {
             if (result.length > 0) {
                 let Encrypted = this.Encrypt(JSON.stringify(result[0]))
                 await localStorage.setItem(Userdata, Encrypted)
-                this.setState({ Show: false })
+
                 if (result[0].role == 'Admin Role') {
                     this.HrefNavigation('/admin/user')
                 } else if (result[0].role == 'Vendor Role') {
@@ -31,6 +31,7 @@ export default class Login extends Essentials {
 
                     this.setState({ PasswordError: 'error' })
                 }
+                this.setState({ Show: false })
             } else {
                 this.setState({ Show: false })
                 this.setState({ PasswordError: 'Username and Password does not match' })
