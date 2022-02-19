@@ -10,10 +10,10 @@ export function ProductList(props) {
                     <div class='col-sm-12 row'>
                         <div class={`col-sm-1`} />
                         <div class={`col-sm-2`}>
-                            <img class='borderincr shadow1' src={`${ACCESS_POINT}/${JSON.parse(ival.image)[0]}`} alt='' style={{ width: 75, height: 75, objectFit: 'contain' }} />
+                            <img class='borderincr shadow1' src={`${ACCESS_POINT}/${JSON.parse(ival.image)[0]}`} alt='' style={{ width: 150, height: 150, objectFit: 'contain' }} />
 
                         </div>
-                        <div class={`col-sm-6`} style={{ maxHeight: 100, overflow: 'hidden', fontSize: 14 }}>
+                        <div class={`col-sm-6`} style={{ maxHeight: 150, overflow: 'hidden', fontSize: 14 }}>
 
                             <div class="col-lg-12">
                                 <label style={{ color: "#f75145", fontWeight: 'bold' }}>Name</label>

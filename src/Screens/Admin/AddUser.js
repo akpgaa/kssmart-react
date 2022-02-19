@@ -78,7 +78,7 @@ export default class AddUser extends Essentials {
 
         return (
             <section id="content-wrapper">
-                  <Loader load={false} isOpen={this.state.Show} />
+                <Loader load={false} isOpen={this.state.Show} />
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card shadow1">
