@@ -34,8 +34,8 @@ export default class routes extends Essentials {
                     <Route exact path={"/"} render={props => {
                         return (
                             <React.Fragment>
-                                <div id="">                                  
-                                    <ProductList {...props}  Login={true}/>
+                                <div id="">
+                                    <ViewProduct {...props} Login={true} />
                                 </div>
                             </React.Fragment>
                         )

@@ -1,4 +1,5 @@
 import { ACCESS_POINT } from "../Config";
+import React, { Component } from "react";
 
 export function ProductList(props) {
     return (
